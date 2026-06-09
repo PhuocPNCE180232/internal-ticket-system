@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { SkeletonList } from "@/components/SkeletonList";
 import { ErrorCard } from "@/components/ErrorCard";
+import Link from "next/link";
 
 export default function TicketsPage() {
   const router = useRouter();
@@ -69,17 +70,19 @@ export default function TicketsPage() {
       {!isLoading && !isError && tickets && tickets.length > 0 && (
         <div className="space-y-4">
           {tickets.map((ticket) => (
-            <div key={ticket.id} className="p-5 border rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl font-semibold">{ticket.title}</h3>
-                <Badge className={getStatusColor(ticket.status)} variant="secondary">
-                  {ticket.status}
-                </Badge>
+            <Link href={`/tickets/${ticket.id}`} key={ticket.id} className="block">
+              <div className="p-5 border rounded-lg shadow-sm bg-white hover:shadow-md hover:border-slate-300 transition-all cursor-pointer">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-xl font-semibold text-slate-900">{ticket.title}</h3>
+                  <Badge className={getStatusColor(ticket.status)} variant="secondary">
+                    {ticket.status}
+                  </Badge>
+                </div>
+                <p className="text-sm text-gray-500 mt-4">
+                  Ngày tạo: {new Date(ticket.createdAt).toLocaleDateString("vi-VN")}
+                </p>
               </div>
-              <p className="text-sm text-gray-500 mt-4">
-                Ngày tạo: {new Date(ticket.createdAt).toLocaleDateString("vi-VN")}
-              </p>
-            </div>
+            </Link>
           ))}
         </div>
       )}

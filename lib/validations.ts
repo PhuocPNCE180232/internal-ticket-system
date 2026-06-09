@@ -6,3 +6,13 @@ export const loginSchema = z.object({
 });
 
 export type LoginFormValues = z.infer<typeof loginSchema>;
+
+export const createTicketSchema = z.object({
+  title: z.string()
+    .min(1, { message: "Vui lòng nhập tiêu đề" })
+    .max(100, { message: "Tiêu đề không được vượt quá 100 ký tự" }),
+  description: z.string()
+    .min(1, { message: "Vui lòng nhập mô tả" }),
+});
+
+export type CreateTicketFormValues = z.infer<typeof createTicketSchema>;

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { TicketStatus } from "@/types";
+import { CommentSection } from "@/components/CommentSection";
 
 export default function TicketDetailPage() {
   const params = useParams();
@@ -105,6 +106,7 @@ export default function TicketDetailPage() {
           )}
         </div>
       </div>
+      <CommentSection ticketId={ticket.id} comments={(ticket as any).comments || []} />
     </div>
   );
 }

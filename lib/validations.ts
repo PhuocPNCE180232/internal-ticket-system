@@ -16,3 +16,9 @@ export const createTicketSchema = z.object({
 });
 
 export type CreateTicketFormValues = z.infer<typeof createTicketSchema>;
+
+export const commentSchema = z.object({
+  content: z.string().min(1, { message: "Bình luận không được để trống" }),
+});
+
+export type CommentFormValues = z.infer<typeof commentSchema>;

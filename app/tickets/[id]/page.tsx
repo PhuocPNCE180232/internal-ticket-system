@@ -49,7 +49,7 @@ export default function TicketDetailPage() {
   }
 
   if (isError) {
-    const is404 = (error as any)?.status === 404;
+const is404 = (error as ApiError)?.status === 404;
     return (
       <div className="max-w-3xl mx-auto p-6 mt-10 text-center bg-white rounded-lg border shadow-sm py-16">
         <h1 className="text-2xl font-bold text-red-600 mb-4">
@@ -106,7 +106,7 @@ export default function TicketDetailPage() {
           )}
         </div>
       </div>
-      <CommentSection ticketId={ticket.id} comments={(ticket as any).comments || []} />
+<CommentSection ticketId={ticket.id} comments={ticket.comments || []} />
     </div>
   );
 }

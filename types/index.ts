@@ -14,3 +14,8 @@ export interface Comment {
   content: string;
   createdAt: string;
 }
+
+export interface ApiError {
+  status: number;
+  message: string;
+}

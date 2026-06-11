@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Internal Ticket System
 
-## Getting Started
+This Internal Ticket Management System project was built as part of a Frontend Intern Assignment. The system allows users to simulate a login, view ticket lists, create new tickets, view details, update status, and post comments.
 
-First, run the development server:
+Setup Instructions
 
-```bash
+To run this project on your local machine, please follow these steps:
+
+Clone the repository:
+
+git clone [https://github.com/PhuocPNCE180232/internal-ticket-system.git](https://github.com/PhuocPNCE180232/internal-ticket-system.git)
+cd internal-ticket-system
+
+
+Install the necessary dependencies:
+
+npm install
+
+
+Start the development server:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Access the application:
+Open your browser and navigate to http://localhost:3000.
+Note: You can enter any valid email address (e.g., admin@teknix.com) and a password of 6 or more characters to bypass the mocked login screen.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Architecture & Tech Stack
 
-## Learn More
+The project is structured in a modular way, clearly separating the user interface (UI) and data fetching logic, adhering strictly to Clean Code requirements.
 
-To learn more about Next.js, take a look at the following resources:
+Framework: Next.js (App Router) with React 18.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Language: TypeScript (Strict mode, completely removing any types).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+State Management & Data Fetching: TanStack Query (React Query) v5.
 
-## Deploy on Vercel
+Reason: Optimizes caching, completely eliminates redundant useState/useEffect, and supports seamless automatic UI refresh (invalidateQueries) upon state updates or new comments.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+UI Components: shadcn/ui combined with Tailwind CSS.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Reason: Ensures design consistency, provides rapid development, and includes built-in Accessibility (a11y) support.
+
+Forms & Validation: React Hook Form combined with Zod.
+
+Mock API: Uses an Axios instance combined with a module-level array to simulate network delays and handle data flow without a real backend.
+
+Authentication: Implements Next.js Middleware to protect the /tickets routes using mocked HTTP cookies.
+
+Main Directory Structure
+
+/app: Contains UI routes and the security middleware.
+
+/components: Contains reusable UI components (Skeleton, ErrorCard, CommentSection, etc.).
+
+/hooks: Contains custom hooks encapsulating data logic (e.g., useTicket.ts).
+
+/lib: Configures Axios, the Mock API, and Zod validation schemas.
+
+/types: Defines global TypeScript interfaces for the entire project.
